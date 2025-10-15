@@ -71,7 +71,6 @@ opcion = st.sidebar.radio(
         " Consumir API",
         " Guardar en SQLite",
         " Leer con Pandas",
-        " Feature Engineering",
         " Visualizaciones Plotly",
         " Exportar Gráficos"
     ]
@@ -236,6 +235,28 @@ df['email_domain'] = df['email'].astype(str).apply(
                      hole=0.4,
                      title='Distribución de dominios de email')
         st.plotly_chart(fig3, use_container_width=True)
+        
+        # NUEVA GRÁFICA 1: Gráfico de dispersión
+        st.write("**Relación entre ID y longitud del nombre**")
+        fig5 = px.scatter(df, x='id', y='name_length', 
+                         size='name_length',
+                         color='email_domain',
+                         hover_data=['name', 'username'],
+                         title='Relación entre ID de usuario y longitud del nombre')
+        fig5.update_layout(xaxis_title='ID Usuario', 
+                          yaxis_title='Longitud del nombre')
+        st.plotly_chart(fig5, use_container_width=True)
+        
+        # NUEVA GRÁFICA 2: Gráfico de líneas
+        st.write("**Evolución de la longitud de nombres por usuario**")
+        df_sorted = df.sort_values('id')
+        fig6 = px.line(df_sorted, x='id', y='name_length', 
+                      markers=True,
+                      title='Evolución de la longitud de nombres por ID de usuario')
+        fig6.update_layout(xaxis_title='ID Usuario', 
+                          yaxis_title='Longitud del nombre')
+        fig6.update_traces(line_color='#FF6B6B', marker=dict(size=8))
+        st.plotly_chart(fig6, use_container_width=True)
         
         # Tabla interactiva
         st.write("**Tabla interactiva de usuarios**")
