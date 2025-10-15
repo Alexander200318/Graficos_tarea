@@ -1,0 +1,10 @@
+streamlit
+pandas
+numpy
+matplotlib
+
+
+requests
+sqlite3
+plotly
+plotly
