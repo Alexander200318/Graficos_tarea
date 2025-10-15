@@ -7,4 +7,3 @@ matplotlib
 requests
 sqlite3
 plotly
-plotly
