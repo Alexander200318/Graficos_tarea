@@ -258,21 +258,7 @@ df['email_domain'] = df['email'].astype(str).apply(
         fig6.update_traces(line_color='#FF6B6B', marker=dict(size=8))
         st.plotly_chart(fig6, use_container_width=True)
         
-        # Tabla interactiva
-        st.write("**Tabla interactiva de usuarios**")
-        fig4 = go.Figure(data=[go.Table(
-            header=dict(
-                values=list(df[['id','name','username','email','phone','website']].columns),
-                align='left'
-            ),
-            cells=dict(
-                values=[df['id'], df['name'], df['username'], 
-                       df['email'], df['phone'], df['website']],
-                align='left'
-            )
-        )])
-        fig4.update_layout(title='Usuarios (tabla)', height=600)
-        st.plotly_chart(fig4, use_container_width=True)
+        
     
     elif opcion == " Exportar Gráficos":
         st.title("Exportar Gráficos")
